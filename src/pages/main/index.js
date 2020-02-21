@@ -2,14 +2,18 @@ import React, { Component } from 'react'
 import api from '../../services/api';
 
 export class index extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             characters: [],
             currentPage: 1,
-            quantityPerPage: 8,
+            quantityPerPage: 3,
+            searchCharacters: '',
+            loadSearchCharcter: [],
         }
         this.handleClick = this.handleClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     componentDidMount() {
@@ -27,13 +31,41 @@ export class index extends Component {
         this.setState({
             currentPage: Number(e.target.id)
         })
-        
+
+    }
+
+    handleChange(e) {
+        this.setState({
+            searchCharacters: e.target.value
+        });
+    }
+
+    handleSubmit(e) {
+        const str = this.state.searchCharacters.split(', ')
+        this.renderSearch(str)
+        e.preventDefault()
+    }
+
+    renderSearch = (str) => {
+        const { characters } = this.state
+        const arr = [];
+        let i = 0;
+        str.map(string => characters.map((character, index) => {
+            if (character.name.search(string) === 0) {
+                i = i + 1;
+                return arr.push(character)
+            }
+            return arr
+        })
+        )
+        this.setState({
+            loadSearchCharcter: arr
+        })
     }
 
 
     render() {
-        const { characters, currentPage, quantityPerPage } = this.state
-
+        const { characters, currentPage, quantityPerPage, loadSearchCharcter } = this.state
         //paginando personagens
         const pageNumber = [];
         for (let i = 1; i <= Math.ceil(characters.length / quantityPerPage); i++)
@@ -45,7 +77,7 @@ export class index extends Component {
 
         //Renderiza todos os personagens da página
         const renderCurrentAll = currentAll.map((character, index) => {
-            return <li id={character.char_id} key={index}>{character.name}</li>
+            return <li key={index}>{character.name}</li>
         })
 
         //renderizando paginação 
@@ -55,6 +87,24 @@ export class index extends Component {
 
         return (
             <div>
+                <div>
+                    <form onSubmit={this.handleSubmit}>
+                        <input
+                            type='text'
+                            onChange={this.handleChange}
+                            value={this.state.searchCharacters}
+                            placeholder='Procure os personagens' />
+                        <input type='submit' value='Enviar' />
+                    </form>
+                    <ul>
+                        {
+                            loadSearchCharcter.map(
+                                (character, index) => <li key={index}>{character.name}</li>
+                            )
+                        }
+                    </ul>
+                </div>
+
                 <ul>
                     {renderCurrentAll}
                 </ul>
