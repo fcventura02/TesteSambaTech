@@ -1,11 +1,15 @@
 import React from 'react';
 import Main from './pages/main';
+import breakingBad from './img/BreakingBad.png'
+import './styles.css'
 
 function App() {
   return (
     <div className="App">
-      <h1>Breaking Bad</h1>
-      <Main/>
+      <div className='imagem'>
+        <img className='br-ba' src={breakingBad} alt="Breacking Bad" />
+      </div>
+      <Main />
     </div>
   );
 }
