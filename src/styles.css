@@ -36,3 +36,25 @@ img.br-ba{
     width: 185px;
     text-align: start;
 }
+
+@media(max-width:414px){
+    div.App{
+        grid-template-columns: 1fr ;
+        grid-template-rows: 20vh 15vh 65vh;
+        grid-template-areas: 'banner'
+                             'pesquisa'
+                             'conteudo';
+    }
+
+    .imagem{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        margin: 0;
+    }
+
+    img.br-ba{
+        width: 185px;
+        text-align: center;
+    }
+}
