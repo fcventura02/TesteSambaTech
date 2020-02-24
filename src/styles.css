@@ -18,9 +18,10 @@ body{
 div.App{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 150px 90vh;
+    grid-template-rows: 150px 80% 10%;
     grid-template-areas: 'banner pesquisa'
-                         'conteudo conteudo';
+                         'conteudo conteudo'
+                         'pag pag';
 
     width: 90%;
     margin: 20px auto 0px;
@@ -37,13 +38,14 @@ img.br-ba{
     text-align: start;
 }
 
-@media(max-width:414px){
+@media(max-width:500px){
     div.App{
         grid-template-columns: 1fr ;
-        grid-template-rows: 20vh 15vh 65vh;
+        grid-template-rows: 20vh 10vh 65vh 5vh;
         grid-template-areas: 'banner'
                              'pesquisa'
-                             'conteudo';
+                             'conteudo'
+                             'pag';
     }
 
     .imagem{
