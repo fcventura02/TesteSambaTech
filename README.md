@@ -7,6 +7,8 @@ O desafio consiste em desenvolver uma aplicação client-side consumindo a API p
 ### Executando o Projeto
 
 Abra a pasta onde foi extraido os arquivos em um terminal.
+execute o comando 'npm install'.
+Após a instalação
 Execute o comando `yarn start` ou `npm start`.
 Abra seu navegador e insira a url [http://localhost:3000](http://localhost:3000) para visualizar o resultado do projeto.
 
