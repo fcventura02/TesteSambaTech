@@ -5,10 +5,12 @@ export class Paginacao extends Component {
         const pageNumber = [];
         for (let i = 1; i <= Math.ceil(characters.length / quantityPerPage); i++)
             pageNumber.push(i)
+
+       
         return pageNumber;
     }
     render() {
-        const {quantityPerPage, characters} = this.props
+        const {quantityPerPage, characters, handleClick} = this.props
         const renderPage = this.paginate(quantityPerPage, characters)
 
         //renderizando paginação 
@@ -17,7 +19,10 @@ export class Paginacao extends Component {
             <>
                 {
                     renderPage.map(number => {
-                        return <a href='#void' id={number} key={number} onClick={this.handleClick}>{number}</a>
+                        let active = 'none'
+                        if(this.props.currentPage === number)
+                            active = 'active'
+                        return <a className={active} href='#void' id={number} key={number} onClick={handleClick}>{number}</a>
                     })
                 }
             </>

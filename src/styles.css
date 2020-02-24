@@ -18,7 +18,7 @@ body{
 div.App{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 150px 80% 10%;
+    grid-template-rows: 150px 90% 10%;
     grid-template-areas: 'banner pesquisa'
                          'conteudo conteudo'
                          'pag pag';
@@ -41,7 +41,7 @@ img.br-ba{
 @media(max-width:500px){
     div.App{
         grid-template-columns: 1fr ;
-        grid-template-rows: 20vh 10vh 65vh 5vh;
+        grid-template-rows: 20vh 10vh 96% 4%;
         grid-template-areas: 'banner'
                              'pesquisa'
                              'conteudo'

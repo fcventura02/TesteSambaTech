@@ -108,6 +108,8 @@ export class index extends Component {
                     <Paginacao
                         quantityPerPage={quantityPerPage}
                         characters={characters}
+                        currentPage={currentPage}
+                        handleClick={this.handleClick}
                     />
 
                 </div>
